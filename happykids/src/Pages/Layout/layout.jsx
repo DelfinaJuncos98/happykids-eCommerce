@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout} from 'antd';
 import Link from 'antd/es/typography/Link';
 import { Dropdown, Space, Typography } from 'antd'
-
+import { ShoppingCartOutlined} from '@ant-design/icons';
 
 
 const { Header, Footer, Content } = Layout;
@@ -38,21 +38,27 @@ const LayoutFunc = (props) => (
                 ))
               }
             </ul>
-       
-            <Dropdown
-              menu={{
-                items,
-                selectable: true,
-                defaultSelectedKeys: ['2'],
-              }}
-            >
-              <Typography.Link>
-                <Space>
-                  User
-  
-                </Space>
-              </Typography.Link>
-            </Dropdown>
+            <div>
+            <Typography.Link style={{fontSize:"22px", margin:"12px 15px 0px 0px"}}>
+            <ShoppingCartOutlined  />
+                </Typography.Link>
+
+              <Dropdown
+                menu={{
+                  items,
+                  selectable: true,
+                  defaultSelectedKeys: ['2'],
+                }}
+              >
+                <Typography.Link>
+                  <Space>
+                    User
+    
+                  </Space>
+                </Typography.Link>
+              </Dropdown>
+            </div>
+
 
             </Header>
             
