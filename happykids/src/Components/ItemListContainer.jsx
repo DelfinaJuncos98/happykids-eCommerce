@@ -9,7 +9,7 @@ const ItemListContainer = ( { hoverable, style, cover, title, description , prod
       style={style}
       cover={cover}
     >
-      <Meta title={title} description={description} producto={producto} />
+      <Meta  style={{display:'flex', flexDirection:"column", justifyContent:'center'}} title={title} description={description} producto={producto} />
     </Card>
 
   )

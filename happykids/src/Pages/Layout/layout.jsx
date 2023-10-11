@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout} from 'antd';
-import Link from 'antd/es/typography/Link';
+import { Link } from 'react-router-dom';
 import { Dropdown, Space, Typography } from 'antd'
 import { ShoppingCartOutlined} from '@ant-design/icons';
 
@@ -20,20 +20,20 @@ const items = [
 ];
 
 const LayoutFunc = (props) => (
-    <Layout>
+    <Layout style={{backgroundColor:"white"}}>
       <Header className='header'>
       
-            <img className='logo' src='happyKidsLogo.png'/>
+            <img className='logo' src='../../../public/happyKidsLogo.png'/>
             
             <ul style={{display:'flex', flexDirection:'row' , marginRight:'150px'}}>
               {
                 items2.map((item, index) => (
                   item == 'Inicio'?
-                  <Link href='/inicio' style={{margin: '20px 15px 0px', color:'#606060'}}><ol key={index} className='custom-link' >{item}</ol></Link>
+                  <Link key={index} to='/inicio' style={{margin: '20px 15px 0px', color:'#606060'}}><ol  className='custom-link' >{item}</ol></Link>
                   : item == 'Catalogo'?
-                  <Link href='/catalogo' style={{margin: '20px 15px 0px', color:'#606060'}}><ol key={index} className='custom-link'>{item}</ol></Link>
+                  <Link key={index} to='/categorias' style={{margin: '20px 15px 0px', color:'#606060'}}><ol  className='custom-link'>{item}</ol></Link>
                   : item == 'Tabla de talles' ?
-                  <Link href='/tabla-de-talles' style={{margin: '20px 15px 0px' , color:'#606060'}}><ol key={index} className='custom-link'>{item}</ol></Link>
+                  <Link key={index} to='/tabla-de-talles' style={{margin: '20px 15px 0px' , color:'#606060'}}><ol  className='custom-link'>{item}</ol></Link>
                   : null
                 ))
               }

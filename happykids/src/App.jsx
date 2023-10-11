@@ -7,6 +7,7 @@ import Inicio from './Pages/Inicio/Inicio.jsx';
 import LayoutFunc from './Pages/Layout/layout';
 import TablaDeTalles from './Pages/TablaDeTalles/TablaDeTalles.jsx';
 import './style.scss';
+import Categorias from './Pages/Categorias/Categorias.jsx';
 
 const App = () => (
   <React.StrictMode>
@@ -14,7 +15,8 @@ const App = () => (
       <LayoutFunc>
         <Routes>
           <Route path="/inicio" element={<Inicio />} />
-          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/categorias" element={<Categorias />} />
+          <Route path="/catalogo/:id" element={<Catalogo />} />
           <Route path="/tabla-de-talles" element={<TablaDeTalles />} />
           <Route path="/detalle-catalogo/:id" element={<DetalleCatalogo />} />
         </Routes>

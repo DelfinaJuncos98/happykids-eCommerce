@@ -1,69 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemListContainer from '../../Components/ItemListContainer';
-import { Card } from 'antd';
 import { Link } from 'react-router-dom';
-
-const { Meta } = Card;
+import categorias from "../../../BaseDeDatosCategorias"
+import { useParams} from 'react-router-dom';
 
 function Catalogo() {
-  // Definir la clase Producto (con mayúscula inicial)
+  const { id } = useParams();
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
 
+  useEffect(() => {
+  
+    const categoria = categorias.find((cat) => cat.id === id);
 
-  class Producto {
-    constructor(id, prenda, valor, url) {
-      this.id = id;
-      this.prenda = prenda;
-      this.valor = valor;
-      this.url = url
+    if (categoria) {
+      setCategoriaSeleccionada(categoria);
+    } else {
+      console.error(`No se encontró una categoría con el ID ${id}`);
     }
-  }
+  }, [id]);
 
-  // Crear una lista de productos
-  const listaProductos = [
-    new Producto(1, 'Remera nena', '$1000', "../../../public/RemeraNena.jpg" ),
-    new Producto(2, 'Remera varon', '$1000', "../../../public/RemeraNene.jpg"),
-    new Producto(3, 'Jean nena', '$1500', "../../../public/JeanNena.jpg"),
-    new Producto(4, 'Jean varon', '$1500',"../../../public/JeanNene.jpg"),
-  ];
+
 
   
-  return (
-    <div>
-      <h2 style={{display:'flex', flexDirection:'row', justifyContent:'center', marginRight:'3%'}}>Lista de Productos</h2>
-      <div style={{display:'flex', flexDirection:'row'  }}>
-        {listaProductos.map((producto) => (
-                 
-<Link
-  key={producto.id}
-  to={{
-    pathname: `/detalle-catalogo/${producto.id}`
-  }}
-  ><ItemListContainer   
-        key={producto.id} hoverable style={{width: 240,margin:'3%'}}
-        cover={<img alt={producto.prenda} src={producto.url} />}
-        title={producto.prenda} description={`Precio: ${producto.valor}`} 
-        produ={producto}/></Link>
-          
-        ))}
-      </div>
-      <div style={{display:'flex', flexDirection:'row', }}>
-        {listaProductos.map((producto) => (
-              <ItemListContainer  key={producto.id} hoverable style={{width: 240,margin:'3%'}}
-                  cover={<img alt={producto.prenda} src={producto.url} />}
-                  title={producto.prenda} description={`Precio: ${producto.valor}`} />
-              
-        ))}
-      </div>
-      <div style={{display:'flex', flexDirection:'row', }}>
-        {listaProductos.map((producto) => (
-             <ItemListContainer  key={producto.id} hoverable style={{width: 240,margin:'3%'}}
+
+
+    return (
+      <div>
+        <h2 style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginRight: '3%' }}>
+          Lista de Productos
+        </h2>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-around" }}>
+          {categoriaSeleccionada && categoriaSeleccionada.productos.map((producto) => (
+            <Link key={producto.id} to={`/detalle-catalogo/${producto.id}`}>
+              <ItemListContainer
+                key={producto.id}
+                hoverable
+                style={{ width: 240, margin: '3%' }}
                 cover={<img alt={producto.prenda} src={producto.url} />}
-                title={producto.prenda} description={`Precio: ${producto.valor}`} />
-            
-        ))}
+                title={producto.prenda}
+                description={`Precio: ${producto.valor}`}
+              />
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+  
+  
+
 
 export default Catalogo;
