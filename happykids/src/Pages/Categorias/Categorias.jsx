@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import categorias from "../../../BaseDeDatosCategorias"
 import { Link } from 'react-router-dom';
 
+
 function Categorias() {
     const [data, setData] = useState();
     useEffect(() => {

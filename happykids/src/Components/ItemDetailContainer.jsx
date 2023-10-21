@@ -1,7 +1,10 @@
 import React from 'react'
 import { Col, Image, Row} from 'antd';
+import QuantitySelector from '../Components/quantitySelector/QuantitySelector';
 
-const ItemDetailContainer = ({categorias}) => {
+const ItemDetailContainer = ({categorias, count}) => {
+
+  
   return (
     <div style={{display: "flex", margin: "100px", justifyContent: "space-around"}}>
           <Row>
@@ -16,7 +19,7 @@ const ItemDetailContainer = ({categorias}) => {
                       <h1>{categorias.prenda}</h1>
                       <h3>Valor: {categorias.valor}</h3>
                       <p>Descripcion: {categorias.descripcion}</p>
-                      
+                      <QuantitySelector categoria={ categorias.prenda}  valor={categorias.valor} descripcion={categorias.descripcion}/>
                       </div>
                       
                   </Col>

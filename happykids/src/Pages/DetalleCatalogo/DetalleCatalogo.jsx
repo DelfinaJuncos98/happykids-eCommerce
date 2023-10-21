@@ -32,8 +32,7 @@ function DetalleCatalogo() {
     return (
       <div>
         <ItemDetailContainer
-          categorias={producto} // Pasa el producto como prop
-        />
+          categorias={producto}/>
       </div>
     );
   } else {
